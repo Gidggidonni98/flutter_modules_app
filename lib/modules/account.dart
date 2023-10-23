@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modules_app/forms/adapters/screens/login.dart';
 
 class Account extends StatelessWidget {
   const Account({Key? key}) : super(key: key);
@@ -6,7 +7,7 @@ class Account extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Account')),
-      body: const Center(child: Text('Account')),
+      body: const Login(),
     );
   }
 
