@@ -11,7 +11,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   bool _isButtonDisabled = true;
-  bool _isObscure = true;
+   bool _isObscure =true;
   final TextEditingController _email = TextEditingController(text: '');
   final TextEditingController _password = TextEditingController(text: '');
 
@@ -59,7 +59,7 @@ class _LoginState extends State<Login> {
                               
                             ),
                           ),
-                          Container(
+                         Container(
                             margin: const EdgeInsets.only(bottom: 16),
                             child: TextFormField(
                               obscureText: _isObscure,
@@ -121,7 +121,3 @@ class _LoginState extends State<Login> {
     );
   }
 }
-
-
-
-
