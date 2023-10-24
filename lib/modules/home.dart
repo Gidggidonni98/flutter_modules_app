@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modules_app/forms/adapters/screens/first_form.dart';
+import 'package:flutter_modules_app/modules/forms/adapters/screens/first_form.dart';
 import 'package:flutter_modules_app/kernel/colors/colors_app.dart';
 
 class Home extends StatelessWidget {

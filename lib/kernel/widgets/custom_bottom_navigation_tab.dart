@@ -16,7 +16,10 @@ class CustomButtonNavigationTab extends StatelessWidget {
         label: 'Inicio'),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Cuenta')
+          label: 'Cuenta'),
+                  BottomNavigationBarItem(
+          icon: Icon(Icons.newspaper),
+          label: 'Noticias')
     ],
     currentIndex: selectedIndex,
     selectedItemColor: ColorsApp.successColor,

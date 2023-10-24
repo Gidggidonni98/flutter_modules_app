@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modules_app/forms/adapters/screens/login.dart';
+import 'package:flutter_modules_app/modules/forms/adapters/screens/login.dart';
 
 class Account extends StatelessWidget {
   const Account({Key? key}) : super(key: key);

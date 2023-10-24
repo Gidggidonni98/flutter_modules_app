@@ -11,6 +11,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   bool _isButtonDisabled = true;
+  bool _isObscure = true;
   final TextEditingController _email = TextEditingController(text: '');
   final TextEditingController _password = TextEditingController(text: '');
 
@@ -61,10 +62,24 @@ class _LoginState extends State<Login> {
                           Container(
                             margin: const EdgeInsets.only(bottom: 16),
                             child: TextFormField(
-                              decoration: const InputDecoration(
+                              obscureText: _isObscure,
+                              decoration: InputDecoration(
+                                
                                 labelText: 'Contraseña',
                                 hintText: 'Ingrese su contraseña',
+                                suffixIcon: IconButton(
+                                  icon: _isObscure
+                                      ? const Icon(Icons.visibility_off)
+                                      : const Icon(Icons.visibility),
+                                  onPressed: () {
+                                    setState(() {
+                                      _isObscure = !_isObscure;
+                                    });
+                                  },
+                                )
+                                
                               ),
+                              
                               keyboardType: TextInputType.name,
                               validator: (value) =>
                                   value!.isEmpty ? 'La contraseña es requerida' : null,
