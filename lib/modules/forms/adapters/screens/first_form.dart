@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modules_app/kernel/validations/validations.dart';
 
@@ -10,6 +11,7 @@ class FirstForm extends StatefulWidget {
 
 class _FirstFormState extends State<FirstForm> {
   final _formKey = GlobalKey<FormState>();
+  final dio = Dio();
   bool _isButtonDisabled = true;
   final TextEditingController _fullname  = TextEditingController(text: '');
   final TextEditingController _age = TextEditingController(text: '');
