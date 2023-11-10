@@ -100,7 +100,9 @@ class _RegisterState extends State<Register> {
                         if (value != _passwordTwo) {
                           const Text('la contrseña debe ser igual');
                         }
+                        return null;
                       },
+  
                       controller: _passwordTwo,
                     ),
                   ),

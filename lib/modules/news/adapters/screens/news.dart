@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modules_app/kernel/colors/colors_app.dart';
 import 'package:flutter_modules_app/kernel/widgets/custom_carrousel.dart';
-import 'package:flutter_modules_app/modules/account.dart';
+
 
 class News extends StatefulWidget {
   @override
@@ -48,7 +48,7 @@ class FirstSection extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),),
                 
                 ),
-            )
+        )
       ]),
     
     );
