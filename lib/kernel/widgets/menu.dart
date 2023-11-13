@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modules_app/config/navigation/account_navigation.dart';
 import 'package:flutter_modules_app/config/navigation/home_navigation.dart';
 import 'package:flutter_modules_app/config/navigation/news_navigation.dart';
+import 'package:flutter_modules_app/config/navigation/shop_navigation.dart';
 import 'package:flutter_modules_app/kernel/widgets/custom_bottom_navigation_tab.dart';
 
 class Menu extends StatefulWidget {
@@ -25,7 +26,7 @@ class _MenuState extends State<Menu> {
     return Scaffold(
         body: IndexedStack(
           index: _selectIndex,
-          children: const [HomeNavigation(), AccountNavigation(), NewsNavigation()],
+          children: const [HomeNavigation(), AccountNavigation(), NewsNavigation(), ShopNavigation()],
         ),
         bottomNavigationBar: CustomButtonNavigationTab(
           onItemTapped: _onItemTapped,
