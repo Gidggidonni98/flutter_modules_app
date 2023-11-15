@@ -4,9 +4,15 @@ import 'package:flutter_modules_app/kernel/widgets/custom_carrousel.dart';
 
 
 class News extends StatefulWidget {
+  const News({super.key});
+
   @override
   State<News> createState() => _NewsState();
 }
+
+
+
+
 
 class _NewsState extends State<News> {
   @override
