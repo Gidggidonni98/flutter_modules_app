@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modules_app/kernel/colors/colors_app.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -14,6 +13,7 @@ class ShopDetail  extends StatelessWidget{
     final description = arguments['description'] ?? '';
     final initialRaiting = arguments['initialRaiting'] ?? 0.0;
     final imageUri = arguments['imageUri'] ?? 'assets/images/logo-utez.png';
+    final price = arguments['price'] ?? 'Error al leer el precio';
     double widthImage = MediaQuery.of(context).size.width;
     return  Scaffold(
       appBar: AppBar(
@@ -41,20 +41,25 @@ class ShopDetail  extends StatelessWidget{
                     ),
                   ),
                   const Spacer(),
-                  RatingBar.builder(
-                    initialRating: initialRaiting,
-                    minRating: 1,
-                    direction: Axis.horizontal,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    itemSize: 16,
-                    ignoreGestures: true,
-                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    itemBuilder: (context, _) => const Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                    onRatingUpdate: (rating) {},
+                  Column(
+                    children: [
+                    Text('\$$price', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: ColorsApp.successColor),),
+                      RatingBar.builder(
+                        initialRating: initialRaiting,
+                        minRating: 1,
+                        direction: Axis.horizontal,
+                        allowHalfRating: true,
+                        itemCount: 5,
+                        itemSize: 16,
+                        ignoreGestures: true,
+                        itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        itemBuilder: (context, _) => const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                        onRatingUpdate: (rating) {},
+                      ),
+                    ],
                   )
                 ],
               )

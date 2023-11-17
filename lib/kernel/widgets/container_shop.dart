@@ -8,7 +8,9 @@ class ContainerShop extends StatelessWidget {
   final String description;
   final double initialRaiting;
   final String imageUri;
-  const ContainerShop({super.key, required this.title, required this.description, required this.initialRaiting, required this.imageUri});
+  final double price;
+  
+  const ContainerShop({super.key, required this.title, required this.description, required this.initialRaiting, required this.imageUri, required this.price, });
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +33,25 @@ class ContainerShop extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                RatingBar.builder(
-                  initialRating: initialRaiting,
-                  minRating: 1,
-                  direction: Axis.horizontal,
-                  allowHalfRating: true,
-                  itemCount: 5,
-                  itemSize: 8,
-                  ignoreGestures: true,
-                  itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  itemBuilder: (context, _) => const Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                  ),
-                  onRatingUpdate: (rating) {},
+                Column(
+                  children: [
+                    Text('\$$price', style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),),
+                    RatingBar.builder(
+                      initialRating: initialRaiting,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemSize: 8,
+                      ignoreGestures: true,
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {},
+                    ),
+                  ],
                 )
               ],
             ),
@@ -65,7 +72,8 @@ class ContainerShop extends StatelessWidget {
                 'title': title,
                 'description': description,
                 'initialRaiting': initialRaiting,
-                'imageUri': imageUri
+                'imageUri': imageUri,
+                'price': price,
               });
             },
             style: OutlinedButton.styleFrom(

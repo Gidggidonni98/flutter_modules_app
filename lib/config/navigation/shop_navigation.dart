@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modules_app/modules/shop/adapters/screens/shop.dart';
+import 'package:flutter_modules_app/modules/shop/adapters/screens/shop_card.dart';
 import 'package:flutter_modules_app/modules/shop/adapters/screens/shop_detail.dart';
 class ShopNavigation extends StatelessWidget {
 
@@ -12,6 +13,7 @@ class ShopNavigation extends StatelessWidget {
       routes: {
         '/shop': (context) => const Shop(),
         '/shop/detail-shop': (context) => const ShopDetail(),
+        '/shop/shop-card': (context) => const ShopCard(),
       },
     );
   }
