@@ -7,6 +7,20 @@ const Shop({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context){
+    final Map <String, dynamic> item = {
+      'title': 'Iphone 14',
+      'description': 'Nuevo Iphone 14 con 256 GB de almacenamiento',
+      'initialRaiting': 3.5,
+      'imageUri': 'assets/images/logo-utez.png',
+    };
+      final Map <String, dynamic> item2 = {
+      'title': 'Iphone 14',
+      'description': 'Nuevo Iphone 14 con 256 GB de almacenamiento',
+      'initialRaiting': 4.5,
+      'imageUri': 'assets/images/iphone.jpg',
+    };
+
+    final List items = [item, item2];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tienda'),
@@ -15,15 +29,23 @@ const Shop({ Key? key }) : super(key: key);
       ),
       body: GridView.count(
   primary: false,
-  padding: const EdgeInsets.all(20),
-  crossAxisSpacing: 10,
+  padding: const EdgeInsets.all(8),
+  crossAxisSpacing: 8,
   mainAxisSpacing: 10,
   crossAxisCount: 2,
-  children: const <Widget>[
-    ContainerShop(),
-    ContainerShop(),
-  ],
-),
+  children: List.generate(items.length, (index) {
+     return ContainerShop(
+        title: items[index]['title'],
+        description: items[index]['description'],
+        initialRaiting: items[index]['initialRaiting'],
+        imageUri: items[index]['imageUri'],
+      
+   );
+   
+   }
+   )
+
+      ),
     );
   }
 }

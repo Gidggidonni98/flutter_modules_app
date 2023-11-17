@@ -1,43 +1,85 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modules_app/kernel/colors/colors_app.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+
 class ContainerShop extends StatelessWidget {
-  const ContainerShop({Key? key}) : super(key: key);
+  final String title;
+  final String description;
+  final double initialRaiting;
+  final String imageUri;
+  const ContainerShop({super.key, required this.title, required this.description, required this.initialRaiting, required this.imageUri});
 
   @override
   Widget build(BuildContext context) {
+    double widthImage = MediaQuery.of(context).size.width;
     return Card(
       elevation: 5,
-      child: Column(children: [
-        const Image(
-          image: AssetImage('assets/images/logo-utez.png'),
-        ),
-        Row(
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text('Tienda'),
+      child: Column(
+        children: [
+          Image.asset(imageUri,
+              width: widthImage, height: 60, fit: BoxFit.contain),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                 SizedBox(
+                  width: 64,
+                  child: Text(
+                    title,
+                    style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const Spacer(),
+                RatingBar.builder(
+                  initialRating: initialRaiting,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemSize: 8,
+                  ignoreGestures: true,
+                  itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  onRatingUpdate: (rating) {},
+                )
+              ],
             ),
-            const Spacer(),
-            RatingBar.builder(
-              initialRating: 3,
-              minRating: 1,
-              direction: Axis.horizontal,
-              allowHalfRating: true,
-              itemCount: 5,
-              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-              itemBuilder: (context, _) => const Icon(
-                Icons.star,
-                color: Colors.amber,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                description,
+                style: const TextStyle(color: Colors.black54, fontSize: 8),
               ),
-              onRatingUpdate: (rating) {
-               null;
-              },
             ),
-           const Text('Mi item'),
-          ],
-        )
-      ]),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/shop/detail-shop', arguments: {
+                'title': title,
+                'description': description,
+                'initialRaiting': initialRaiting,
+                'imageUri': imageUri
+              });
+            },
+            style: OutlinedButton.styleFrom(
+              foregroundColor: ColorsApp.successColor,
+              backgroundColor: Colors.white,
+              side: const BorderSide(color: ColorsApp.successColor),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+            child: const Text('Ver más'),
+          )
+        ],
+      ),
     );
   }
 }
