@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modules_app/kernel/colors/colors_app.dart';
-import 'package:flutter_modules_app/kernel/widgets/access_shop_card.dart';
+import 'package:flutter_modules_app/kernel/widgets/access_shop_cart.dart';
 import 'package:flutter_modules_app/kernel/widgets/container_shop.dart';
 
 class Shop extends StatelessWidget {
@@ -9,18 +9,18 @@ const Shop({ Key? key }) : super(key: key);
   @override
   Widget build(BuildContext context){
     final Map <String, dynamic> item = {
-      'title': 'Iphone 14',
-      'description': 'Nuevo Iphone 14 con 256 GB de almacenamiento',
+      'title': 'Iphone 15',
+      'description': 'Nuevo Iphone 15 con 512 GB de almacenamiento',
       'initialRaiting': 3.5,
-      'imageUri': 'assets/images/logo-utez.png',
-      'price': 1000.00
+      'imageUri': 'assets/images/iphone.jpg',
+      'price': 22000.00
     };
       final Map <String, dynamic> item2 = {
       'title': 'Iphone 14',
       'description': 'Nuevo Iphone 14 con 256 GB de almacenamiento',
       'initialRaiting': 4.5,
       'imageUri': 'assets/images/iphone.jpg',
-      'price': 1000.00
+      'price': 30000.00
     };
 
     final List items = [item, item2];
@@ -29,8 +29,8 @@ const Shop({ Key? key }) : super(key: key);
         title: const Text('Tienda'),
         backgroundColor: ColorsApp.primaryColor,
         foregroundColor: ColorsApp.whiteColor,
-        actions: [
-          AccessShopCard()
+        actions: const [
+          AccessShopCart()
         ],
       ),
       body: GridView.count(
@@ -46,7 +46,6 @@ const Shop({ Key? key }) : super(key: key);
         initialRaiting: items[index]['initialRaiting'],
         imageUri: items[index]['imageUri'],
         price: items[index]['price'],
-      
    );
    
    }

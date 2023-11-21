@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modules_app/kernel/colors/colors_app.dart';
 
-class ShopCard extends StatelessWidget {
+
+class ShopCard extends StatefulWidget {
+  
   const ShopCard({Key? key}) : super(key: key);
 
   @override
+  State<ShopCard> createState() => _ShopCardState();
+}
+
+  @override
+  void initState() async{
+    
+
+  } 
+
+class _ShopCardState extends State<ShopCard> {
+  @override
   Widget build(BuildContext context) {
+    
     return const Scaffold(
       body: Column(
         children: [

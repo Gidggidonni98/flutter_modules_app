@@ -9,8 +9,7 @@ class ContainerShop extends StatelessWidget {
   final double initialRaiting;
   final String imageUri;
   final double price;
-  
-  const ContainerShop({super.key, required this.title, required this.description, required this.initialRaiting, required this.imageUri, required this.price, });
+  const ContainerShop({super.key, required this.title, required this.description, required this.initialRaiting, required this.imageUri, required this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,10 @@ class ContainerShop extends StatelessWidget {
                 const Spacer(),
                 Column(
                   children: [
-                    Text('\$$price', style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text('\$ $price', style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: ColorsApp.successColor)),
+                    ),
                     RatingBar.builder(
                       initialRating: initialRaiting,
                       minRating: 1,
@@ -73,7 +75,7 @@ class ContainerShop extends StatelessWidget {
                 'description': description,
                 'initialRaiting': initialRaiting,
                 'imageUri': imageUri,
-                'price': price,
+                'price': price
               });
             },
             style: OutlinedButton.styleFrom(

@@ -1,6 +1,10 @@
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modules_app/kernel/colors/colors_app.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ShopDetail  extends StatelessWidget{
   const ShopDetail({super.key});
@@ -13,7 +17,7 @@ class ShopDetail  extends StatelessWidget{
     final description = arguments['description'] ?? '';
     final initialRaiting = arguments['initialRaiting'] ?? 0.0;
     final imageUri = arguments['imageUri'] ?? 'assets/images/logo-utez.png';
-    final price = arguments['price'] ?? 'Error al leer el precio';
+    final price = arguments['price'] ?? 'error';  
     double widthImage = MediaQuery.of(context).size.width;
     return  Scaffold(
       appBar: AppBar(
@@ -43,7 +47,7 @@ class ShopDetail  extends StatelessWidget{
                   const Spacer(),
                   Column(
                     children: [
-                    Text('\$$price', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: ColorsApp.successColor),),
+                      Text('\$ $price', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: ColorsApp.successColor)),
                       RatingBar.builder(
                         initialRating: initialRaiting,
                         minRating: 1,
@@ -78,7 +82,39 @@ class ShopDetail  extends StatelessWidget{
         ),
       ),  
       floatingActionButton: ElevatedButton(
-        onPressed: () {
+        onPressed: () async{
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          List<Map<String, dynamic>> itemsList = [];
+
+          Map<String, dynamic> item = {
+            'title': title,
+            'description': description,
+            'initialRaiting': initialRaiting,
+            'imageUri': imageUri,
+            'price': price
+          };
+
+          String? currentListString = prefs.getString('items');
+          if (currentListString != null) {
+            List<dynamic> currentList = json.decode(currentListString);
+            itemsList = currentList.cast<Map<String, dynamic>>();
+          }
+
+          // Verificar si el producto ya existe en la lista
+          bool itemExists = itemsList.any((existingItem) => existingItem['title'] == title);
+
+          if (!itemExists) {
+            itemsList.add(item);
+            String itemSave = json.encode(itemsList);
+            prefs.setString('items', itemSave);
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('El producto ya existe en el carrito'),
+                backgroundColor: ColorsApp.dangerColor,
+              ),
+            );
+          }
         },
         style: OutlinedButton.styleFrom(
           foregroundColor: ColorsApp.successColor,
