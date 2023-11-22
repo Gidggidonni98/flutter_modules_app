@@ -18,6 +18,7 @@ class ShopDetail extends StatelessWidget {
     final initialRaiting = arguments['initialRaiting'] ?? 0.0;
     final imageUri = arguments['imageUri'] ?? 'assets/images/logo-utez.png';
     final price = arguments['price'] ?? 'error';
+    final quantity = arguments['quantity'] ?? 1;
     double widthImage = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
@@ -89,7 +90,8 @@ class ShopDetail extends StatelessWidget {
             'description': description,
             'initialRaiting': initialRaiting,
             'imageUri': imageUri,
-            'price': price
+            'price': price,
+            'quantity': quantity
           };
 
           String? currentListString = prefs.getString('items');
@@ -100,18 +102,22 @@ class ShopDetail extends StatelessWidget {
           bool itemExists =
               itemsList.any((existingItem) => existingItem['title'] == title);
 
-          if (!itemExists) {
-            itemsList.add(item);
+          if (itemExists) {
+           
+
+              List item2 = itemsList.where((element) => element['title'] == title).toList();
+              item2[0]['quantity'] = item2[0]['quantity'] + 1;
             String itemSave = json.encode(itemsList);
             prefs.setString('items', itemSave);
           } else {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('El producto ya existe en el carrito'),
-                backgroundColor: ColorsApp.dangerColor,
-              ),
-            );
+                itemsList.add(item);
+            String itemSave = json.encode(itemsList);
+            prefs.setString('items', itemSave);
           }
+
+       
+        
+        
         },
         style: OutlinedButton.styleFrom(
           foregroundColor: ColorsApp.successColor,

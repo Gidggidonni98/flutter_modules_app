@@ -13,14 +13,16 @@ const Shop({ Key? key }) : super(key: key);
       'description': 'Nuevo Iphone 15 con 512 GB de almacenamiento',
       'initialRaiting': 4.5,
       'imageUri': 'assets/images/iphone.jpg',
-      'price': 25000.00
+      'price': 25000.00,
+      'quantity': 0
     };
       final Map <String, dynamic> item2 = {
       'title': 'Iphone 14',
       'description': 'Nuevo Iphone 14 con 256 GB de almacenamiento',
       'initialRaiting': 4.9,
       'imageUri': 'assets/images/iphone.jpg',
-      'price': 15000.00
+      'price': 15000.00,
+      'quantity': 0
     };
 
     final List items = [item, item2];

@@ -80,10 +80,13 @@ Widget build(BuildContext context) {
                         children: [
                           Text('\$${items[index]['price']}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green)),
                         ],
-                      )
+                      ),
+                      
+                       
                     ],
                   ),
                 ),
+                Text('\$${items[index]['quantity']}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green)),
                 Padding(
                   padding: const EdgeInsets.all(8),
                   child: Row(
